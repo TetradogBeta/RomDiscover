@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RomDiscover"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="Rom discover" Height="350" Width="525">
+    <TabControl>
+        <TabItem Header="Roms">
+            <!--aqui se puede buscar y cargar achivos gba sueltos o carpetas enteras, solo acepta edicion+compilacion+idioma no existentes (aceptar los que no son usa y esp para hacerlo flexible y poder descubrir mas) -->
+            <!--Aqui seleccionan la rom Actual a descubrir-->
+        </TabItem>
+        <TabItem Header="Imagenes">
+            <!-- Aqui se buscan imagenes dado un offset y si puede mira las siguientes (poder configurar si lo hace y cuantas de seguidas (pudiendo hacer hasta acabar))-->
+            <!-- Poder exportar las imagenes y las paletas-->
+            <!-- poder guardar offsets y ponerles nombre (guarda el offset para esa rom en concreto porque cambia para cada rom)-->  
+        </TabItem>
+        <TabItem Header="Texto pokémon">
+            <!-- Permite descifrar unos bytes -->
+            <!-- Poner byte FIN y tambien longitud maxima-->
+            <!-- Si hay longitud maxima mirar de calcular mas textos al estilo de la pestaña imagenes-->
+        </TabItem>
+        <TabItem Header="Buscar Datos">
+            <!-- Permite crear bloques de bytes y guardarlos para luego poderlos buscar en otras roms-->
+            <!-- permite mirar mas de una rom a la vez si estan esos bytes-->
+            <!-- permite guardar los offsets de esos bytes y ponerles nombre-->
+          
+        </TabItem>
+        <TabItem Header="Offset Pointer Discover">
+            <!-- En esta parte te permite poner un offset a mano o guardado y mirar si es una zona y si no lo es que te le busque (y si hay más de una también las puede mostrar)-->
+        </TabItem>
+        <TabItem Header="Datos Descubiertos">
+            <!-- permite hacer un seguimiento de lo descubierto y ponerle nombre y guardarlo-->
+            <!-- Aqui estan todos los datos encontrados en las demás partes-->
+            <!-- Se tiene que poder manipular la información para borrar,editar,exportar,importar-->
+            <!-- Estaria bien poder organizar las cosas por temáticas y con comentarios en cada sección y elemento-->
+            <!-- Poder exportar datos para luego poderlos importar en otrol lugar-->
+        </TabItem>
+    </TabControl>
 </Window>
