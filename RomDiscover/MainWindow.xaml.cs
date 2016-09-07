@@ -17,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Gabriel.Cat.Extension;
 namespace RomDiscover
-{
+{//zafiro 1.1 ,1.2 , fire red 1.1 y verde hoja 1.1
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -62,8 +62,15 @@ namespace RomDiscover
         }
         private void AñadirRom(string fullName)
         {
-           //añado la rom si no esta mirando su path
+            //añado la rom si no esta mirando su path
+            RomViewer romViewer = new RomViewer(fullName);
+            romViewer.Seleccionado += RomCambiada;
+            ugRomsGba.Children.Add(romViewer);
         }
 
+        private void RomCambiada(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

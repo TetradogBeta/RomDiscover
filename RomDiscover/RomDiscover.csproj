@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,6 +66,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="recursos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>recursos.resx</DependentUpon>
+    </Compile>
     <Compile Include="RomViewer.xaml.cs">
       <DependentUpon>RomViewer.xaml</DependentUpon>
     </Compile>
@@ -103,6 +109,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="recursos.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>recursos.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -111,6 +121,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\gbaIcono.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\PokeballEsmeralda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\PokeballRojoFuego.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\PokeballRuby.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\PokeballVerdeHoja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\PokeballZafiro.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
