@@ -42,6 +42,8 @@
             <!-- Poder leer numeros Hex y que sean de tamaño variable-->
             <!-- Cada variable tiene un nombre por defecto y se puede cambiar para la previsualizacion poderlo ver-->
             <!-- poder exportar los datos encontrados y importarlos(añadiendolo al final o sustituyendo a alguno) -->
+            <!-- Si hay mas de un pointer paleta o paleta poner para que imagen es (se puede poner ? para que se prueben en ambas y luego poder elegir cual es la correcta y quitar los ?? que hayan)-->
+            <!-- poder crear formatos nuevos usando otros (solo copia lo que tiene no forma la base para otros porque si se modificase cambiarian los demas...y mejor no)-->
         </TabItem>
         <TabItem Header="Datos Descubiertos">
             <!-- permite hacer un seguimiento de lo descubierto y ponerle nombre y guardarlo-->
