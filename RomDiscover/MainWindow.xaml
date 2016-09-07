@@ -30,6 +30,19 @@
         <TabItem Header="Offset Pointer Discover">
             <!-- En esta parte te permite poner un offset a mano o guardado y mirar si es una zona y si no lo es que te le busque (y si hay más de una también las puede mostrar)-->
         </TabItem>
+        <TabItem Header="Formatos">
+            <!-- Aqui se crean,editan,eliminan,exportan e importan formatos hechos graficamente-->
+            <!-- Un formato se usa para poder leer datos de forma correcta y automaticamente detectar si hay o no dicho formato (se puede acabar una serie si el formato deja de ser valido por ejemplo)-->
+  <!-- Poder poner datos imprescindibles y que supone el incumplimiento el formato no es correcto y luego hay datos prescindibles pero que se usan-->
+            <!-- Pointer?,Pointer imagen,Pointer paleta,Pointer Texto(Con caracter final y/o tamaño fijo),Datos desconocidos(que se ignoran)-->
+            <!-- poder saber los pointer? que son-->
+            <!-- Poder poner el inicio para empezar a leer el formato y poder contar todo lo que se ha encontrado (cada elemento tiene su offset y se puede guardar)-->
+            <!---los formatos se usan en las demas pestañas-->
+            <!---Poder mostrar los datos del formato en una parte de forma ordenada y explicando que son por ejemplo pointerImg img,pointerPaleta paleta,pointerTexto texto,Texto texto,etc...-->
+            <!-- Poder leer numeros Hex y que sean de tamaño variable-->
+            <!-- Cada variable tiene un nombre por defecto y se puede cambiar para la previsualizacion poderlo ver-->
+            <!-- poder exportar los datos encontrados y importarlos(añadiendolo al final o sustituyendo a alguno) -->
+        </TabItem>
         <TabItem Header="Datos Descubiertos">
             <!-- permite hacer un seguimiento de lo descubierto y ponerle nombre y guardarlo-->
             <!-- Aqui estan todos los datos encontrados en las demás partes-->
