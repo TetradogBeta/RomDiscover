@@ -10,11 +10,28 @@
         <TabItem Header="Roms">
             <!--aqui se puede buscar y cargar achivos gba sueltos o carpetas enteras, solo acepta edicion+compilacion+idioma no existentes (aceptar los que no son usa y esp para hacerlo flexible y poder descubrir mas) -->
             <!--Aqui seleccionan la rom Actual a descubrir-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="237*"/>
+                    <RowDefinition Height="34"/>
+                </Grid.RowDefinitions>
+                <UniformGrid x:Name="ugRomsGba"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnAñadirArchivoGBA" Content="Añadir ROM" Click="btnAñadirArchivoGBA_Click"/>
+                    <Button x:Name="btnAñadirCarpetaRoms" Content="Añadir carpeta entera ROM" Grid.Column="1" Click="btnAñadirCarpetaRoms_Click"/>
+                    <CheckBox x:Name="chkEliminarAlClick" Content="Quitar de la lista al click" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
         </TabItem>
         <TabItem Header="Imagenes">
             <!-- Aqui se buscan imagenes dado un offset y si puede mira las siguientes (poder configurar si lo hace y cuantas de seguidas (pudiendo hacer hasta acabar))-->
             <!-- Poder exportar las imagenes y las paletas-->
-            <!-- poder guardar offsets y ponerles nombre (guarda el offset para esa rom en concreto porque cambia para cada rom)-->  
+            <!-- poder guardar offsets y ponerles nombre (guarda el offset para esa rom en concreto porque cambia para cada rom)-->
         </TabItem>
         <TabItem Header="Texto pokémon">
             <!-- Permite descifrar unos bytes -->
@@ -25,7 +42,7 @@
             <!-- Permite crear bloques de bytes y guardarlos para luego poderlos buscar en otras roms-->
             <!-- permite mirar mas de una rom a la vez si estan esos bytes-->
             <!-- permite guardar los offsets de esos bytes y ponerles nombre-->
-          
+
         </TabItem>
         <TabItem Header="Offset Pointer Discover">
             <!-- En esta parte te permite poner un offset a mano o guardado y mirar si es una zona y si no lo es que te le busque (y si hay más de una también las puede mostrar)-->
@@ -33,7 +50,7 @@
         <TabItem Header="Formatos">
             <!-- Aqui se crean,editan,eliminan,exportan e importan formatos hechos graficamente-->
             <!-- Un formato se usa para poder leer datos de forma correcta y automaticamente detectar si hay o no dicho formato (se puede acabar una serie si el formato deja de ser valido por ejemplo)-->
-  <!-- Poder poner datos imprescindibles y que supone el incumplimiento el formato no es correcto y luego hay datos prescindibles pero que se usan-->
+            <!-- Poder poner datos imprescindibles y que supone el incumplimiento el formato no es correcto y luego hay datos prescindibles pero que se usan-->
             <!-- Pointer?,Pointer imagen,Pointer paleta,Pointer Texto(Con caracter final y/o tamaño fijo),Datos desconocidos(que se ignoran)-->
             <!-- poder saber los pointer? que son-->
             <!-- Poder poner el inicio para empezar a leer el formato y poder contar todo lo que se ha encontrado (cada elemento tiene su offset y se puede guardar)-->
