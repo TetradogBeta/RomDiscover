@@ -32,6 +32,7 @@ namespace RomDiscover
         {
             seleccionado = false;
             InitializeComponent();
+            grid.Background = Brushes.Transparent;
         }
         public RomViewer(string pathRom)
             : this()
@@ -71,7 +72,7 @@ namespace RomDiscover
         {
             get
             {
-                return edicionPokemon != null;
+                return compilacionPokemon != null;
             }
 
         }

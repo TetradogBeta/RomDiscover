@@ -8,11 +8,12 @@
              d:DesignHeight="300" d:DesignWidth="300" >
     <Grid x:Name="grid" MouseLeftButtonUp="SeleccionadoClick">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" MinHeight="25"/>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="imgRom" MouseLeftButtonUp="SeleccionadoClick"/>
-        <TextBlock x:Name="txtRomName"  MouseLeftButtonUp="SeleccionadoClick" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"/>
-   
+        <Image x:Name="imgRom" />
+        <Viewbox Grid.Row="1" >
+        <TextBlock x:Name="txtRomName"   HorizontalAlignment="Center"/>
+        </Viewbox>
     </Grid>
 </UserControl>

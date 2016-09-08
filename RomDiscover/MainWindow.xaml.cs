@@ -70,7 +70,7 @@ namespace RomDiscover
 
         private void RomCambiada(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+        
         }
     }
 }
