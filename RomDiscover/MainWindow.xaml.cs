@@ -16,6 +16,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Gabriel.Cat.Extension;
+using Gabriel.Cat;
+using PokemonGBAFrameWork;
+
 namespace RomDiscover
 {//zafiro 1.1 ,1.2 , fire red 1.1 y verde hoja 1.1
     /// <summary>
@@ -78,6 +81,113 @@ namespace RomDiscover
                romActual = sender as RomViewer;
             else romActual = null;
         
+        }
+
+        private void txtNumImgACargar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (romActual != null)
+                if (Hex.ValidaString(txtNumImgACargar.Text))
+            {
+                    CargaLasImagenes();
+                }
+        }
+
+        private void cmbFormatosImgs_Selected(object sender, RoutedEventArgs e)
+        {
+            if (romActual != null) {
+            }
+        }
+
+        private void txtOffsetImg_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+            if (romActual!=null)
+            if (Hex.ValidaString(txtOffsetImg.Text))
+            {//si me han puesto las paletas cargo sino espero a que lo hagan
+                    CargaLasImagenes();
+            }
+        }
+        private void CargaLasImagenes()
+        {
+            string txtImg = txtOffsetImg.Text;
+            string txtPaleta = txtOffsetPaleta.Text;
+            CargaImagenes(txtImg,txtPaleta);
+            if (lstImgs.Items.Count == 0)
+            {
+                try
+                {
+                    CargaImagenes(Offset.GetOffset(romActual.Rom, txtImg), txtPaleta);
+                }
+                catch { }
+                finally
+                {
+                    if (lstImgs.Items.Count == 0)
+                    {
+                        try
+                        {
+                            CargaImagenes(txtImg, Offset.GetOffset(romActual.Rom, txtPaleta));
+                        }
+                        catch { }
+                        finally
+                        {
+                            if (lstImgs.Items.Count == 0)
+                            {
+                                try
+                                {
+                                    CargaImagenes(Offset.GetOffset(romActual.Rom, txtImg), Offset.GetOffset(romActual.Rom, txtPaleta));
+                                }
+                                catch { }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void CargaImagenes(Hex offsetImg,Hex offsetPaleta)
+        {
+
+            ImagenConOffset img;
+            int total = int.MaxValue;
+            lstImgs.Items.Clear();
+            try
+            {
+                img = new ImagenConOffset(BloqueImagen.GetBloqueImagen(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom, offsetImg, 0), BloqueImagen.Paleta.GetPaleta(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom,offsetPaleta, 0))));
+                img.Selected += PonImagen;
+                lstImgs.Items.Add(img);
+                if (Hex.ValidaString(txtNumImgACargar.Text))
+                    total = (Hex)txtNumImgACargar.Text;
+                for (int i = 0; i < total; i++)
+                {
+                    //cargo las siguientes y si peta pues dejo de añadir :D
+                    img = new ImagenConOffset(BloqueImagen.GetBloqueImagen(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom,offsetImg,i+1), BloqueImagen.Paleta.GetPaleta(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom, offsetPaleta, i + 1))));
+                    img.Selected += PonImagen;
+                    lstImgs.Items.Add(img);
+                }
+
+            }
+            catch { }
+        }
+
+        private void PonImagen(object sender, EventArgs e)
+        {
+            ImagenConOffset img = sender as ImagenConOffset;
+            this.imgCargada.SetImage(img.BloqueImagen[0]);
+            this.pltImgCargada.Colors = img.BloqueImagen.GetPaleta(0).ColoresPaleta;
+        }
+
+        private void txtOffsetPaleta_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            if (romActual != null)
+                if (Hex.ValidaString(txtOffsetPaleta.Text))
+            {//si me han puesto las img cargo sino espero a que lo hagan.
+                    CargaLasImagenes();
+                }
+        }
+
+        private void lstImgs_Selected(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

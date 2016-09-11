@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RomDiscover"
+        xmlns:wpf="clr-namespace:Gabriel.Cat.Wpf;assembly=Gabriel.Cat.Wpf"
         mc:Ignorable="d"
         Title="Rom discover" Height="350" Width="525">
     <TabControl>
@@ -32,6 +33,67 @@
             <!-- Aqui se buscan imagenes dado un offset y si puede mira las siguientes (poder configurar si lo hace y cuantas de seguidas (pudiendo hacer hasta acabar))-->
             <!-- Poder exportar las imagenes y las paletas-->
             <!-- poder guardar offsets y ponerles nombre (guarda el offset para esa rom en concreto porque cambia para cada rom)-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350*"/>
+                    <ColumnDefinition Width="157*"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="211*"/>
+                        <RowDefinition Height="57*"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="193*"/>
+                            <RowDefinition Height="18*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="45*"/>
+                            <ColumnDefinition Width="51*"/>
+                            <ColumnDefinition Width="79*"/>
+                        </Grid.ColumnDefinitions>
+                        <wpf:ColorTable x:Name="pltImgCargada" Grid.Column="1"/>
+                        <Image x:Name="imgCargada" Grid.Column="2"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ComboBox x:Name="cmbFormatosImgs" SelectionChanged="cmbFormatosImgs_Selected" />
+                        <Grid  Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="102*"/>
+                                <ColumnDefinition Width="73*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Offset Img Inicio"/>
+                            <TextBox x:Name="txtOffsetImg" Grid.Column="1" TextChanged="txtOffsetImg_TextChanged"/>
+                        </Grid>
+                        <Grid  Grid.Column="1" Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="102*"/>
+                                <ColumnDefinition Width="73*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Offset Paleta Inicio"/>
+                            <TextBox x:Name="txtOffsetPaleta" Grid.Column="1" TextChanged="txtOffsetPaleta_TextChanged"/>
+                        </Grid>
+                        <Grid   Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="104*"/>
+                                <ColumnDefinition Width="71*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Imagenes a Cargar"/>
+                            <TextBox x:Name="txtNumImgACargar" Grid.Column="1" TextChanged="txtNumImgACargar_TextChanged"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <ListView x:Name="lstImgs" Grid.Column="1" />
+            </Grid>
         </TabItem>
         <TabItem Header="Texto pokémon">
             <!-- Permite descifrar unos bytes -->
