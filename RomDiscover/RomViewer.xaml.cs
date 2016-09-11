@@ -27,7 +27,7 @@ namespace RomDiscover
         CompilacionRom.Compilacion? compilacionPokemon;
         bool seleccionado;
 
-        public event EventHandler Seleccionado;
+        public event EventHandler<RomViewerSeleccionadoArgs> Seleccionado;
         public RomViewer()
         {
             seleccionado = false;
@@ -55,7 +55,7 @@ namespace RomDiscover
 
                 Edicion = Edicion.GetEdicion(rom);
                 CompilacionPokemon = CompilacionRom.GetCompilacion(rom, Edicion);
-                switch (Edicion.Abreviacion)
+                switch (Edicion.AbreviacionRom)
                 {
                     case Edicion.ABREVIACIONRUBI: imgRom.SetImage(recursos.PokeballRuby); break;
                     case Edicion.ABREVIACIONZAFIRO: imgRom.SetImage(recursos.PokeballZafiro); break;
@@ -88,12 +88,13 @@ namespace RomDiscover
             {
                 seleccionado = value;
                 if (seleccionado)
-                    grid.Background = Brushes.Green;
-                else grid.Background = Brushes.Transparent;
-                if (seleccionado && Seleccionado != null)
-                    Seleccionado(this, new EventArgs());
+                    Seleccionar();
+                else Deseleccionar();
+                if (Seleccionado != null)
+                    Seleccionado(this, new RomViewerSeleccionadoArgs(seleccionado));
             }
         }
+
 
         public Edicion Edicion
         {
@@ -120,10 +121,31 @@ namespace RomDiscover
                 compilacionPokemon = value;
             }
         }
-
+        /// <summary>
+        /// Selecciona sin lanzar el evento
+        /// </summary>
+        public void Seleccionar()
+        {
+            grid.Background = Brushes.Green;
+            seleccionado = true;
+        }
+        /// <summary>
+        /// Deselecciona sin lanzar el evento
+        /// </summary>
+        public void Deseleccionar()
+        {
+            grid.Background = Brushes.Transparent;
+            seleccionado = false;
+        }
         private void SeleccionadoClick(object sender, MouseButtonEventArgs e)
         {
             EstaSeleccionado = !EstaSeleccionado;
         }
+    }
+    public class RomViewerSeleccionadoArgs : EventArgs
+    {
+       public bool EstaSeleccionado { get; private set; }
+        public RomViewerSeleccionadoArgs(bool seleccionado)
+        { EstaSeleccionado = seleccionado; }
     }
 }

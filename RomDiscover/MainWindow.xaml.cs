@@ -23,8 +23,10 @@ namespace RomDiscover
     /// </summary>
     public partial class MainWindow : Window
     {
+        RomViewer romActual;
         public MainWindow()
         {
+            romActual = null;
             InitializeComponent();
         }
 
@@ -68,8 +70,13 @@ namespace RomDiscover
             ugRomsGba.Children.Add(romViewer);
         }
 
-        private void RomCambiada(object sender, EventArgs e)
+        private void RomCambiada(object sender, RomViewerSeleccionadoArgs e)
         {
+            if (romActual != null)
+                romActual.Deseleccionar();
+            if(e.EstaSeleccionado)
+               romActual = sender as RomViewer;
+            else romActual = null;
         
         }
     }
