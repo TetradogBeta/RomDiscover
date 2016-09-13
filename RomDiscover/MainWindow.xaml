@@ -92,7 +92,10 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <ListView x:Name="lstImgs" Grid.Column="1" />
+                <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                    <UniformGrid x:Name="ugImgs" Columns="3" />
+                </ScrollViewer>
+
             </Grid>
         </TabItem>
         <TabItem Header="Texto pokémon">

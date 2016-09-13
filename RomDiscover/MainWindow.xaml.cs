@@ -77,8 +77,11 @@ namespace RomDiscover
         {
             if (romActual != null)
                 romActual.Deseleccionar();
-            if(e.EstaSeleccionado)
-               romActual = sender as RomViewer;
+            if (e.EstaSeleccionado)
+            {
+                romActual = sender as RomViewer;
+                CargaLasImagenes();//de momento 
+            }
             else romActual = null;
         
         }
@@ -112,7 +115,7 @@ namespace RomDiscover
             string txtImg = txtOffsetImg.Text;
             string txtPaleta = txtOffsetPaleta.Text;
             CargaImagenes(txtImg,txtPaleta);
-            if (lstImgs.Items.Count == 0)
+            if (ugImgs.Children.Count == 0)
             {
                 try
                 {
@@ -121,7 +124,7 @@ namespace RomDiscover
                 catch { }
                 finally
                 {
-                    if (lstImgs.Items.Count == 0)
+                    if (ugImgs.Children.Count == 0)
                     {
                         try
                         {
@@ -130,7 +133,7 @@ namespace RomDiscover
                         catch { }
                         finally
                         {
-                            if (lstImgs.Items.Count == 0)
+                            if (ugImgs.Children.Count == 0)
                             {
                                 try
                                 {
@@ -148,20 +151,23 @@ namespace RomDiscover
 
             ImagenConOffset img;
             int total = int.MaxValue;
-            lstImgs.Items.Clear();
+            ugImgs.Children.Clear();
             try
             {
-                img = new ImagenConOffset(BloqueImagen.GetBloqueImagen(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom, offsetImg, 0), BloqueImagen.Paleta.GetPaleta(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom,offsetPaleta, 0))));
-                img.Selected += PonImagen;
-                lstImgs.Items.Add(img);
+                
+                    img = new ImagenConOffset(BloqueImagen.GetBloqueImagen(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom, offsetImg, 0), Paleta.GetPaleta(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom, offsetPaleta, 0))));
+                    img.Selected += PonImagen;
+                    ugImgs.Children.Add(img);
+
                 if (Hex.ValidaString(txtNumImgACargar.Text))
                     total = (Hex)txtNumImgACargar.Text;
-                for (int i = 0; i < total; i++)
+                for (int i = 1; i < total; i++)
                 {
-                    //cargo las siguientes y si peta pues dejo de añadir :D
-                    img = new ImagenConOffset(BloqueImagen.GetBloqueImagen(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom,offsetImg,i+1), BloqueImagen.Paleta.GetPaleta(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom, offsetPaleta, i + 1))));
-                    img.Selected += PonImagen;
-                    lstImgs.Items.Add(img);
+                    
+                        //cargo las siguientes y si peta pues dejo de añadir :D
+                        img = new ImagenConOffset(BloqueImagen.GetBloqueImagen(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom, offsetImg, i + 1), Paleta.GetPaleta(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom, offsetPaleta, i + 1))));
+                        img.Selected += PonImagen;
+                        ugImgs.Children.Add(img);
                 }
 
             }
@@ -172,7 +178,7 @@ namespace RomDiscover
         {
             ImagenConOffset img = sender as ImagenConOffset;
             this.imgCargada.SetImage(img.BloqueImagen[0]);
-            this.pltImgCargada.Colors = img.BloqueImagen.GetPaleta(0).ColoresPaleta;
+            this.pltImgCargada.Colors = img.BloqueImagen.Paletas[0].Colores;
         }
 
         private void txtOffsetPaleta_TextChanged(object sender, TextChangedEventArgs e)
