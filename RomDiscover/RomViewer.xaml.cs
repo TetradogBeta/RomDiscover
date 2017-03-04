@@ -51,10 +51,11 @@ namespace RomDiscover
 
                 if (value == null) throw new ArgumentNullException();
                 rom = value;
-                txtRomName.Text = rom.NombreRom;
+               
 
                 Edicion = Edicion.GetEdicion(rom);
                 CompilacionPokemon = CompilacionRom.GetCompilacion(rom, Edicion);
+                txtRomNameAndCompilation.Text = rom.NombreRom+"#Compilacion."+CompilacionPokemon.ToString()+" ";
                 switch (Edicion.AbreviacionRom)
                 {
                     case Edicion.ABREVIACIONRUBI: imgRom.SetImage(recursos.PokeballRuby); break;

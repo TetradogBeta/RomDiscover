@@ -152,10 +152,10 @@ namespace RomDiscover
             ImagenConOffset img;
             int total = int.MaxValue;
             ugImgs.Children.Clear();
-            try
+           /* try
             {
                 
-                    img = new ImagenConOffset(BloqueImagen.GetBloqueImagen(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom, offsetImg, 0), Paleta.GetPaleta(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom, offsetPaleta, 0))));
+                    img = new ImagenConOffset(BloqueImagen.GetBloqueImagen(romActual.Rom, BloqueImagen.GetOffsetPointerImg(romActual.Rom, offsetImg, 0), Paleta.GetPaleta(romActual.Rom, BloqueImagen.GetOffsetImg(romActual.Rom, offsetPaleta, 0))));
                     img.Selected += PonImagen;
                     ugImgs.Children.Add(img);
 
@@ -171,7 +171,7 @@ namespace RomDiscover
                 }
 
             }
-            catch { }
+            catch { }*/
         }
 
         private void PonImagen(object sender, EventArgs e)

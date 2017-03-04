@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <Image x:Name="imgRom" />
         <Viewbox Grid.Row="1" >
-        <TextBlock x:Name="txtRomName"   HorizontalAlignment="Center"/>
+        <TextBlock x:Name="txtRomNameAndCompilation"   HorizontalAlignment="Center"/>
         </Viewbox>
     </Grid>
 </UserControl>
